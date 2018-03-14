@@ -1,0 +1,23 @@
+body{
+    background-color: white;
+    margin: 0px auto;
+    text-align: center;
+    background-image: url(../images/b-image3.JPG);
+    width: 960px;
+    
+
+    
+}
+.container{
+     text-align: center;
+}
+#main{
+    background-color: white;
+    margin-top: 50px;
+    height: 550px;
+}
+h1{
+    text-align: center;
+    margin: 10px;
+    color: blue;
+}

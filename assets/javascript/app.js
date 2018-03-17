@@ -42,7 +42,7 @@ $(document).ready(function(){
         $("#about").hide();
 function startingGame (){       
         if (questions1) {
-                // ......set timing...........................
+            clearInterval(timeCount);   
                 function timing(){
                     $("div").addClass("important");
                     timeCount = setInterval (function timer(){
@@ -72,17 +72,15 @@ function startingGame (){
                 timing();    
             // ...........Correct answer.........
             $("body").on("click", "#answer1-1", function(){
-//---------------------hide....................
                 $(".wrong2").hide();
                 $("#answer2-3").hide();
                 $(".wrong3").hide();
                 $("#answer3-2").hide();
                 $(".wrong1").hide();
                 $("#answer1-1").hide();
-//-----------------------------------------------------
                 wins++;
                 $("#wins").html("Wins:"+ " " + " " + wins);
-                $("#loses").html("Wins:"+ " " + " " + loses);
+                $("#loses").html("Loses:"+ " " + " " + loses);
                 $("#notAnswer").html("Unanswered:"+ " " + " " + unanswered);   
                 console.log( "This is a wins point:" + "" + wins);
                 clearInterval(timeCount);
@@ -110,7 +108,6 @@ function startingGame (){
                 $(".wrong1").hide();
                 $("#answer1-1").hide();
                 console.log( "This is a lost point:" + "" + loses);
-                
                 $("#answerTitle").html("Wrong answer!");            
                 $("#answerImages").html( "<img src='./assets/images/real.GIF'>");
                 $("#question1").html("   " );
@@ -137,11 +134,11 @@ function startingGame (){
     
     // -----------------PART2-------------------------
     function gamequestion2(){
+        clearInterval(timeCount);   
         var part2 = setTimeout (function secondQuestion(){    
         times =9;
             function timing2(){
                 timeCount = setInterval (function timer(){
-//------------------------hide---Show-------------------
                     $(".wrong2").show();
                     $("#answer2-3").show();
                     $(".wrong1").hide();
@@ -218,7 +215,6 @@ function startingGame (){
                 gamequestion3();
             }); 
 
-
             $("#answerImages").html(" ");
             $("#answerTitle").html("  ");
             $("#question1").html( questions1[1] );
@@ -231,39 +227,39 @@ function startingGame (){
     }
 //----------------PART3---------------------
     function gamequestion3(){
+        clearInterval(timeCount);   
             var part3= setTimeout(function thirdQuestion(){
             times =9;
-                function timing3(){
-                    timeCount = setInterval (function timer(){
-//----------------------hide------------show--------------------------------------
-                        $(".wrong3").show();
-                        $("#answer3-2").show();
-                        $(".wrong1").hide();
-                        $(".wrong2").hide();
-                        $("#answr1-1").hide();
-                        $("#answer2-3").hide();                    
-                        times--;
-                        if (times === 0){
-                        clearInterval(timeCount);
-                        unanswered++;
-                        console.log( "You do not answer:" + "" + unanswered);
-                        $("#answerTitle").html("Time is Out!");         
-                        $("#answerImages").html("<img src='./assets/images/brezil.GIF'>");
-                        $("#wins").html("Wins:"+ " " + " " + wins);
-                        $("#loses").html("Lose:"+ " " + " " + loses);
-                        $("#notAnswer").html("Unanswered:"+ " " + " " + unanswered); 
-                        $("#question1").html(" ");
-                        $("#answer3-1").html("   " );
-                        $("#answer3-2").html("   " );
-                        $("#answer3-3").html("   " );
-                        $("#answer3-4").html("   " );
-                        console.log("Time Is Out!"+ " " + answers3[1]);
-                        gamequestion4();                       
-                        }
-                        $("#times").html("<span>Time remating:<span>" + "   " + "   " + "   "  + times + "   " + "   " + "   "+ "Seconds");
-                    }, 1000);      
-                }
-                timing3(); 
+            function timing3(){
+                timeCount = setInterval (function timer(){
+                    $(".wrong3").show();
+                    $("#answer3-2").show();
+                    $(".wrong1").hide();
+                    $(".wrong2").hide();
+                    $("#answr1-1").hide();
+                    $("#answer2-3").hide();                    
+                    times--;
+                    if (times === 0){
+                    clearInterval(timeCount);
+                    unanswered++;
+                    console.log( "You do not answer:" + "" + unanswered);
+                    $("#answerTitle").html("Time is Out!");         
+                    $("#answerImages").html("<img src='./assets/images/brezil.GIF'>");
+                    $("#wins").html("Wins:"+ " " + " " + wins);
+                    $("#loses").html("Lose:"+ " " + " " + loses);
+                    $("#notAnswer").html("Unanswered:"+ " " + " " + unanswered); 
+                    $("#question1").html(" ");
+                    $("#answer3-1").html("   " );
+                    $("#answer3-2").html("   " );
+                    $("#answer3-3").html("   " );
+                    $("#answer3-4").html("   " );
+                    console.log("Time Is Out!"+ " " + answers3[1]);
+                    gamequestion4();                       
+                    }
+                    $("#times").html("<span>Time remating:<span>" + "   " + "   " + "   "  + times + "   " + "   " + "   "+ "Seconds");
+                }, 1000);      
+            }
+            timing3(); 
 
         $("body").on("click", "#answer3-2", function(){
             clearInterval(timeCount);
@@ -288,6 +284,7 @@ function startingGame (){
             console.log("Correct answer is :"+ " " + answers3[1]);
             gamequestion4();
         });
+
         $("body").on("click", ".wrong3 ", function(){
             clearInterval(timeCount);
             loses++;
@@ -325,6 +322,7 @@ function startingGame (){
 //-------------------part 4-----------------
 
     function gamequestion4(){
+        clearInterval(timeCount);   
         $(".wrong4").show();
         $("#answer4-1").show();
         var part4 = setTimeout (function fourthQuestion(){  
@@ -369,8 +367,6 @@ function startingGame (){
             $("#answer4-2").html("   " );
             $("#answer4-3").html("   " );
             $("#answer4-4").html("   " );
-
-
             console.log("Correct answer is :"+ " " + answers4[0]);
             gamequestion5(); 
         });
@@ -404,6 +400,7 @@ function startingGame (){
 }
 //------------------part5----------------------------------
 function gamequestion5(){
+    clearInterval(timeCount);   
         $(".wrong5").show();
         $("#answer5-4").show();
         var part5 = setTimeout (function fiveQuestion(){  
@@ -476,7 +473,6 @@ function gamequestion5(){
 
     }, 5000);
 }
-
 //----------------part6---------------------------------
 function gamequestion6(){
     $(".wrong6").show();
@@ -627,7 +623,6 @@ function gamequestion7(){
 
 }, 5000);
 }
-
 //--------------------part8----------------------
 function gamequestion8(){
     $(".wrong8").show();
@@ -703,7 +698,6 @@ function gamequestion8(){
 
 }, 5000);
 }
-
 //----------part9----------------------
 function gamequestion9(){
     $(".wrong9").show();
@@ -736,6 +730,7 @@ function gamequestion9(){
         }, 1000);   
     }
     timing9();
+
     $("body").on("click", "#answer9-2", function(){
         clearInterval(timeCount);
         wins++;
@@ -753,6 +748,7 @@ function gamequestion9(){
         console.log("Correct answer is :"+ " " + answers9[1]);
         gamequestion10(); 
     });
+
     $("body").on("click", ".wrong9", function(){
         clearInterval(timeCount);
         loses++;
@@ -846,7 +842,6 @@ function gamequestion10(){
         scores();
     }); 
 
-
     $("#answerImages").html(" ");
     $("#answerTitle").html("  ");
     $("#question1").html( questions1[9] );
@@ -858,141 +853,139 @@ function gamequestion10(){
 }, 5000);
 }
 
-function scores(){
-    times =0;
-    $(".wrong2").hide();
-    $("#answer2-3").hide();
-    $(".wrong3").hide();
-    $("#answer3-2").hide();
-    $(".wrong1").hide();
-    $("#answer1-1").hide();
-var part3= setTimeout(function secondQuestion(){
-    $("#wins").html("Wins:"+ " " + " " + wins);
-    $("#loses").html("loses:"+ " " + " " + loses);
-    $("#startOver").show();
-    $("#results").html("all done, this is Your results");
-    $("#answerImages").html(" " );
-    $("#endWins").html("<span> Correrct Answers: </span>" + " " + " "+" "  + wins);
-    $("#endLoses").html("<span> Wrong Answers: </span>" + " " + " "+" "  + loses);
-    $("#unanswered").html("<span> Unanswered: </span>" + " " + " "+" "  + unanswered);
-    $("#startOver").html(" Start Over?")
-    
+    function scores(){
+        times =0;
+        $(".wrong2").hide();
+        $("#answer2-3").hide();
+        $(".wrong3").hide();
+        $("#answer3-2").hide();
+        $(".wrong1").hide();
+        $("#answer1-1").hide();
+    var part3= setTimeout(function secondQuestion(){
+        $("#wins").html("Wins:"+ " " + " " + wins);
+        $("#loses").html("loses:"+ " " + " " + loses);
+        $("#startOver").show();
+        $("#results").html("all done, this is Your results");
+        $("#answerImages").html(" " );
+        $("#endWins").html("<span> Correrct Answers: </span>" + " " + " "+" "  + wins);
+        $("#endLoses").html("<span> Wrong Answers: </span>" + " " + " "+" "  + loses);
+        $("#unanswered").html("<span> Unanswered: </span>" + " " + " "+" "  + unanswered);
+        $("#startOver").html(" Start Over?")
+        
 
-}, 5000);
+    }, 5000);
 
-//------------------------Starting Over------------------------------------------------------------
-}
+    }
 
-$("body").on("click"," #startOver", function(){
-    $("h6").hide();
-    wins=0;
-    loses=0;
-    unanswered=0;
-    $("#results").hide();
-    $("#endWins").hide();
-    $("#endLoses").hide();
-    $("#unanswered").hide();
-    $(".wrong1").show();
-    $("#answer1-1").show();
-    $("#startOver").hide();
+    $("body").on("click"," #startOver", function(){
+        $("h6").hide();
+        wins=0;
+        loses=0;
+        unanswered=0;
+        $("#results").hide();
+        $("#endWins").hide();
+        $("#endLoses").hide();
+        $("#unanswered").hide();
+        $(".wrong1").show();
+        $("#answer1-1").show();
+        $("#startOver").hide();
 
-    function startingAgain(){
-        clearInterval(timeCount);
-        var playAgain= setTimeout(function secondQuestion(){
-            $("#question1").html("");
-            $("#answer3-1").html(" ");
-            $("#answer3-2").html(" ");
-            $("#answer3-3").html(" ");
-            $("#answer3-4").html(" ");
-            $("#answerTitle").html(" ");
-            $("#answerImages").html(" " );
-            $("#wins").html(" ");
-            $("#loses").html(" ");
-            $("#unanswered").html(" ");
-            function startingGame (){  
-                $("#wins").html("Wins:"+ " " + " " + wins);
-                $("#loses").html("Lose:"+ " " + " " + loses);
-                $("#notAnswer").html("Unanswered:"+ " " + " " + unanswered);     
-                if (questions1) {
-                    times=9;
-                    // ......set timing...........................
-                    function timing(){
-                        $("div").addClass("important");
-                        timeCount = setInterval (function timer(){
-                            times--;
-                            if (times === 0){
-                            clearInterval(timeCount);
-                            unanswered++;
-                            console.log( "You do not answer:" + "" + unanswered);
-                            $("#answerTitle").html("Time is Out!");         
-                            $("#answerImages").html( "<img src='./assets/images/real.GIF'>");
+        function startingAgain(){
+            clearInterval(timeCount);
+            var playAgain= setTimeout(function secondQuestion(){
+                $("#question1").html("");
+                $("#answer3-1").html(" ");
+                $("#answer3-2").html(" ");
+                $("#answer3-3").html(" ");
+                $("#answer3-4").html(" ");
+                $("#answerTitle").html(" ");
+                $("#answerImages").html(" " );
+                $("#wins").html(" ");
+                $("#loses").html(" ");
+                $("#unanswered").html(" ");
+                function startingGame (){  
+                    $("#wins").html("Wins:"+ " " + " " + wins);
+                    $("#loses").html("Lose:"+ " " + " " + loses);
+                    $("#notAnswer").html("Unanswered:"+ " " + " " + unanswered);     
+                    if (questions1) {
+                        times=9;
+                        // ......set timing...........................
+                        function timing(){
+                            $("div").addClass("important");
+                            timeCount = setInterval (function timer(){
+                                times--;
+                                if (times === 0){
+                                clearInterval(timeCount);
+                                unanswered++;
+                                console.log( "You do not answer:" + "" + unanswered);
+                                $("#answerTitle").html("Time is Out!");         
+                                $("#answerImages").html( "<img src='./assets/images/real.GIF'>");
+                                $("#wins").html("Wins:"+ " " + " " + wins);
+                                $("#loses").html("Lose:"+ " " + " " + loses);
+                                $("#notAnswer").html("Unanswered:"+ " " + " " + unanswered); 
+                                $("#question1").html("   " );
+                                $("#answer1-1").html("   " );
+                                $("#answer1-2").html("   " );
+                                $("#answer1-3").html("   " );
+                                $("#answer1-4").html("   " );
+                                console.log("Time Is Out!"+ " " + answers1[0]);
+                                gamequestion2();    
+                                }
+                                $("#times").html("<span>Time remating:<span>" + "   " + "   "  + times  +  "   " + "   "+ "Seconds");
+                            }, 1000);    
+                        }
+                            timing();    
+                        // ...........Correct answer.........
+                        $("body").on("click", "#answer1-1", function(){
+            //---------------------hide....................
+                            $(".wrong2").hide();
+                            $("#answer2-3").hide();
+                            $(".wrong3").hide();
+                            $("#answer3-2").hide();
+                            $(".wrong1").hide();
+                            $("#answer1-1").hide();
+            //-----------------------------------------------------
+                            wins++;
                             $("#wins").html("Wins:"+ " " + " " + wins);
                             $("#loses").html("Lose:"+ " " + " " + loses);
-                            $("#notAnswer").html("Unanswered:"+ " " + " " + unanswered); 
+                            $("#notAnswer").html("Unanswered:"+ " " + " " + unanswered);   
+                            console.log( "This is a wins point:" + "" + wins);
+                            clearInterval(timeCount);
+                            $("#answerTitle").html("Correct!");         
+                            $("#answerImages").html("<img src='./assets/images/real.GIF'>");
                             $("#question1").html("   " );
                             $("#answer1-1").html("   " );
                             $("#answer1-2").html("   " );
                             $("#answer1-3").html("   " );
                             $("#answer1-4").html("   " );
-                            console.log("Time Is Out!"+ " " + answers1[0]);
+                            console.log("Correct answeris"+ " " + answers1[0]);
                             gamequestion2();    
-                            }
-                            $("#times").html("<span>Time remating:<span>" + "   " + "   "  + times  +  "   " + "   "+ "Seconds");
-                        }, 1000);    
+                        });
+                        // --------Wrong answers------for question1-----
+                        $("body").on("click", ".wrong1 ", function(){
+                            clearInterval(timeCount);
+                            loses++;
+                            $("#wins").html("Wins:"+ " " + " " + wins);
+                            $("#loses").html("Loses:"+ " " + " " + loses);
+                            $("#notAnswer").html("Unanswered:"+ " " + " " + unanswered);
+                            $(".wrong2").hide();
+                            $("#answrr2-3").hide();
+                            $(".wrong3").hide();
+                            $("#answer3-2").hide();
+                            $(".wrong1").hide();
+                            $("#answer1-1").hide();
+                            console.log( "This is a lost point:" + "" + loses); 
+                            $("#answerTitle").html("Wrong answer!");            
+                            $("#answerImages").html( "<img src='./assets/images/real.GIF'>");
+                            $("#question1").html("   " );
+                            $("#answer1-1").html("   " );
+                            $("#answer1-2").html("   " );
+                            $("#answer1-3").html("   " );
+                            $("#answer1-4").html("   " ); 
+                            console.log("Wrong answer!"+ " " + answers1[0]);
+                            gamequestion2();
+                        });    
                     }
-                        timing();    
-                    // ...........Correct answer.........
-                    $("body").on("click", "#answer1-1", function(){
-        //---------------------hide....................
-                        $(".wrong2").hide();
-                        $("#answer2-3").hide();
-                        $(".wrong3").hide();
-                        $("#answer3-2").hide();
-                        $(".wrong1").hide();
-                        $("#answer1-1").hide();
-        //-----------------------------------------------------
-                        wins++;
-                        $("#wins").html("Wins:"+ " " + " " + wins);
-                        $("#loses").html("Lose:"+ " " + " " + loses);
-                        $("#notAnswer").html("Unanswered:"+ " " + " " + unanswered);   
-                        console.log( "This is a wins point:" + "" + wins);
-                        clearInterval(timeCount);
-                        $("#answerTitle").html("Correct!");         
-                        $("#answerImages").html("<img src='./assets/images/real.GIF'>");
-                        $("#question1").html("   " );
-                        $("#answer1-1").html("   " );
-                        $("#answer1-2").html("   " );
-                        $("#answer1-3").html("   " );
-                        $("#answer1-4").html("   " );
-                        console.log("Correct answeris"+ " " + answers1[0]);
-                        gamequestion2();    
-                    });
-                    // --------Wrong answers------for question1-----
-                    $("body").on("click", ".wrong1 ", function(){
-                        clearInterval(timeCount);
-                        loses++;
-                        $("#wins").html("Wins:"+ " " + " " + wins);
-                        $("#loses").html("Loses:"+ " " + " " + loses);
-                        $("#notAnswer").html("Unanswered:"+ " " + " " + unanswered);
-                        $(".wrong2").hide();
-                        $("#answrr2-3").hide();
-                        $(".wrong3").hide();
-                        $("#answer3-2").hide();
-                        $(".wrong1").hide();
-                        $("#answer1-1").hide();
-                        console.log( "This is a lost point:" + "" + loses);
-                        
-                        $("#answerTitle").html("Wrong answer!");            
-                        $("#answerImages").html( "<img src='./assets/images/real.GIF'>");
-                        $("#question1").html("   " );
-                        $("#answer1-1").html("   " );
-                        $("#answer1-2").html("   " );
-                        $("#answer1-3").html("   " );
-                        $("#answer1-4").html("   " ); 
-                        console.log("Wrong answer!"+ " " + answers1[0]);
-                        gamequestion2();
-                    });    
-                }
                     function askquestion1(){
         // dom questions1 ..........and ..............answer1
                         $("#question1").html( questions1[0]);
@@ -1007,8 +1000,7 @@ $("body").on("click"," #startOver", function(){
         }, 1000); 
     } 
     startingAgain();
-    
-//----------------End Of Starting Over------------------------------------------------------------       
+      
 });
 
 
